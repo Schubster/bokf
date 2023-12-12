@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Spreadsheet.css'; // Import the CSS file
 
 const Spreadsheet = () => {
   const [data, setData] = useState([
@@ -13,6 +14,7 @@ const Spreadsheet = () => {
   const addColumn = () => {
     const newData = data.map((row) => [...row, '']);
     setData(newData);
+    console.log(data)
   };
 
   const handleCellValueChange = (rowIndex, colIndex, value) => {
@@ -33,14 +35,16 @@ const Spreadsheet = () => {
   return (
     <div>
       <table>
-      <button onClick={addColumn}>Add Column</button>
         <tbody>
           {data.map((row, rowIndex) => (
             <tr key={rowIndex}>
               {row.map((cell, colIndex) => (
-                <td key={colIndex}>
+                <td
+                  key={colIndex}
+                >
                   <input
                     type="text"
+                    class={"row"+rowIndex}
                     value={cell}
                     onChange={(e) => handleCellValueChange(rowIndex, colIndex, e.target.value)}
                   />
@@ -55,6 +59,7 @@ const Spreadsheet = () => {
         <strong>Overall Sum:</strong> {calculateOverallSum()}
       </div>
       <button onClick={addRow}>Add Row</button>
+      <button onClick={addColumn}>Add Column</button>
     </div>
   );
 };
