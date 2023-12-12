@@ -13,8 +13,7 @@ function App() {
     const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
     console.log("stored shit:", storedTodos)
     if(!(storedTodos.length === 0))
-    setTodos(todos =>{
-      return [storedTodos]})
+    setTodos(storedTodos)
   }, [])
 
   useEffect(() => {
@@ -22,10 +21,16 @@ function App() {
   }, [todos])
 
   function toggleTodo(id) {
-    const newTodos = [todos]
+    console.log(id)
+    const newTodos = [todos][0]
+    console.log(newTodos)
     const todo = newTodos.find(todo => todo.id === id)
+    console.log(todo)
     todo.complete = !todo.complete
-    setTodos(newTodos)
+    console.log(todo)
+    setTodos(newTodos => {
+      return [...newTodos]
+  })
   }
 
   function handleAddTodo(e) {
