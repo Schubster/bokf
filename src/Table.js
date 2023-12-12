@@ -1,6 +1,22 @@
 import React, { useState } from 'react';
 import './Spreadsheet.css'; // Import the CSS file
 
+
+function getByTitle(col, row)
+{
+  if (row!=0) return row + ", " + col
+  var Title = ""
+  switch(col) {
+    case 0:
+      return "TransectionsID"
+    case 1:
+      return "namn"
+    case 2:
+      return "värde"
+    default: return "osv"
+  }
+}
+
 const Spreadsheet = () => {
   const [data, setData] = useState([
     ['Cell 1'],
@@ -32,6 +48,8 @@ const Spreadsheet = () => {
     }, 0);
   };
 
+
+
   return (
     <div>
       <table>
@@ -42,12 +60,13 @@ const Spreadsheet = () => {
                 <td
                   key={colIndex}
                 >
-                  <input
+                  <div
                     type="text"
                     class={"row"+rowIndex}
                     value={cell}
                     onChange={(e) => handleCellValueChange(rowIndex, colIndex, e.target.value)}
-                  />
+                    style={{borderw: 2 + 'px'}}
+                  >{getByTitle(colIndex, rowIndex)}</div>
                 </td>
               ))}
             </tr>

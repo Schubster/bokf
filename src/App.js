@@ -21,13 +21,9 @@ function App() {
   }, [todos])
 
   function toggleTodo(id) {
-    console.log(id)
     const newTodos = [todos][0]
-    console.log(newTodos)
     const todo = newTodos.find(todo => todo.id === id)
-    console.log(todo)
     todo.complete = !todo.complete
-    console.log(todo)
     setTodos(newTodos => {
       return [...newTodos]
   })
