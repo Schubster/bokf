@@ -44,7 +44,7 @@ const Spreadsheet = () => {
 
   return (
     <div>
-      <table>
+      <table border={1} frame={"hsides"} rules={"rows"}>
         <tbody>
           {data.map((row, rowIndex) => (
             <tr key={rowIndex}>
@@ -57,10 +57,10 @@ const Spreadsheet = () => {
                     class={"row"+rowIndex}
                     value={cell}
                     onChange={(e) => handleCellValueChange(rowIndex, colIndex, e.target.value)}
-                    style={{borderw: 2 + 'px'}}
                   >{getByTitle(colIndex, rowIndex)}</div>
                 </td>
               ))}
+              
             </tr>
           ))}
         </tbody>
