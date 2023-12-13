@@ -2,8 +2,21 @@ import React, { useState, useRef, useEffect } from 'react';
 import TodoList from './TodoList'
 import { v4 as uuidv4 } from 'uuid';
 
-
 const LOCAL_STORAGE_KEY = 'todoApp.todos'
+
+
+
+const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => {
+  res.status(200).send('Hello World!');
+})
+
+app.listen(port, () => {
+  console.log(`App running on port ${port}.`)
+})
 
 function App() {
   const [todos, setTodos] = useState([])
