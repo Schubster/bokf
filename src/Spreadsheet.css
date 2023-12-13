@@ -4,8 +4,15 @@
     margin: 20px;
     border: 2px;
   }
-td{
+tr{
   margin: 20px;
   border: 2px;
+  height: 40px;
+  border-color: black;
+  border-style: solid;
+}
+table{
+  background-color: bisque;
+  text-align: center;
 } 
   
