@@ -43,7 +43,7 @@ const Spreadsheet = () => {
 
 
   return (
-    <div>
+    <><div>
       <table border={1} frame={"hsides"} rules={"rows"}>
         <tbody>
           {data.map((row, rowIndex) => (
@@ -54,13 +54,13 @@ const Spreadsheet = () => {
                 >
                   <div
                     type="text"
-                    class={"row"+rowIndex}
+                    class={"row" + rowIndex}
                     value={cell}
                     onChange={(e) => handleCellValueChange(rowIndex, colIndex, e.target.value)}
                   >{getByTitle(colIndex, rowIndex)}</div>
                 </td>
               ))}
-              
+
             </tr>
           ))}
         </tbody>
@@ -71,7 +71,9 @@ const Spreadsheet = () => {
       </div>
       <button onClick={addRow}>Add Row</button>
       <button onClick={addColumn}>Add Column</button>
-    </div>
+
+    </div><hr /><div></div></>
+
   );
 };
 
