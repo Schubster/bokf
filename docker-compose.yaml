@@ -32,7 +32,7 @@ services:
     image: node
     working_dir: /app
     volumes:
-      - C:\ract\react-docker:/app # Replace 'react_app' with your React app directory
+      - C:\Users\erwin.hornell\Documents\GitHub\bank:/app # Replace 'react_app' with your React app directory
     ports:
       - "3000:3000" # Expose React development server port
     command: sh -c "npm install && npm start"
