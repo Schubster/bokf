@@ -5,22 +5,14 @@ import './Spreadsheet.css'; // Import the CSS file
 function getByTitle(col, row)
 {
   if (row!=0) return row + ", " + col
-  var Title = ""
-  switch(col) {
-    case 0:
-      return "TransectionsID"
-    case 1:
-      return "namn"
-    case 2:
-      return "värde"
-    default: return "osv"
-  }
+  return titleArr[col] ?? "like idk"
 }
 
+const titleArr = ["id", " transaktionsnummer", "belopp", "beskrivning", "datum"]
+const testArr = [[1, 200]]
+
 const Spreadsheet = () => {
-  const [data, setData] = useState([
-    ['Cell 1'],
-  ]);
+  const [data, setData] = useState([titleArr]);
 
   const addRow = () => {
     const newData = [...data, Array(data[0].length).fill('')];
