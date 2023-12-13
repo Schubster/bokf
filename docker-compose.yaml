@@ -1,0 +1,43 @@
+version: "3"
+services:
+  bokf-db:
+    image: docker.io/postgres
+    environment:
+      - POSTGRES_DB=bokforing
+      - POSTGRES_USER=linus
+      - POSTGRES_PASSWORD=password
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - ./volumes/bokforing_db:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "pg_isready",
+          "-q",
+          "-d",
+          "bokforing",
+          "-U",
+          "linus"
+        ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    networks:
+      - linus_network
+
+  react_app:
+    image: node
+    working_dir: /app
+    volumes:
+      - C:\ract\react-docker:/app # Replace 'react_app' with your React app directory
+    ports:
+      - "3000:3000" # Expose React development server port
+    command: sh -c "npm install && npm start"
+    networks:
+      - linus_network
+
+networks:
+  linus_network:
