@@ -44,6 +44,7 @@ const Spreadsheet = () => {
 
   return (
     <><div>
+
       <table border={1} frame={"hsides"} rules={"rows"}>
         <tbody>
           {data.map((row, rowIndex) => (
@@ -67,7 +68,7 @@ const Spreadsheet = () => {
       </table>
       <hr />
       <div>
-        <strong>Overall Sum:</strong> {calculateOverallSum()}
+        <strong>Overall Suasdasdasdasdadm:</strong> {calculateOverallSum()}
       </div>
       <button onClick={addRow}>Add Row</button>
       <button onClick={addColumn}>Add Column</button>

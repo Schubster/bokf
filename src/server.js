@@ -22,6 +22,18 @@ app.get('/api/data', async (req, res) => {
   }
 });
 
+app.get('/cors', (req, res) => {
+    res.send('This has CORS enabled 🎈')
+})
 app.listen(port, () => {
   console.log("Server is running on port " + port);
 });
+app.use(function (req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3001/api/data");
+    res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Content-Type, Access-Control-Allow-Headers"
+    );
+    next();
+  });
