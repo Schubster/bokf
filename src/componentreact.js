@@ -10,7 +10,7 @@ const SpreadsheetTEST = () => {
   const fetchData = async () => {
     try {
       // Update the fetch URL to match your server endpoint
-      const response = await fetch('http://localhost:3000/api/data');
+      const response = await fetch('http://localhost:3001/api/data');
       const jsonData = await response.json();
       setData(jsonData);
     } catch (error) {
@@ -18,12 +18,23 @@ const SpreadsheetTEST = () => {
     }
   };
 
+  console.log(data);
+
   return (
     <div>
-      {"wdasdadswww"}
-      {data.map(item => (
-        <div key={item.id}>{item.name}</div>
-      ))}
+      {"ewadasdrwin"}
+      {data.length === 0 ? (
+        <p>No data available</p>
+      ) : (
+        data.map(item => (
+          <div key={item.id}>
+            <p>ID: {item.id}</p>
+            <p>Konto: {item.konto}</p>
+            <p>Summa: {item.summa}</p>
+            <p>Transaktion: {item.transaktion}</p>
+          </div>
+        ))
+      )}
     </div>
   );
 };
