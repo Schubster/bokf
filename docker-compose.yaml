@@ -1,5 +1,17 @@
-version: "3"
+version: "3.8"
 services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/react-docker:delegated
+      - /node_modules
+    ports:
+      - 3000:3000
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
   bokf-db:
     image: docker.io/postgres
     environment:
@@ -9,6 +21,8 @@ services:
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - ./volumes/bokforing_db:/var/lib/postgresql/data
+      - ./:/react-docker:delegated
+      - /node_modules
     ports:
       - "127.0.0.1:5432:5432"
     healthcheck:
@@ -25,17 +39,6 @@ services:
       timeout: 45s
       interval: 10s
       retries: 10
-    networks:
-      - linus_network
-
-  react_app:
-    image: node
-    working_dir: /app
-    volumes:
-      - C:\Users\erwin.hornell\Documents\GitHub\bank:/app # Replace 'react_app' with your React app directory
-    ports:
-      - "3000:3000" # Expose React development server port
-    command: sh -c "npm install && npm start"
     networks:
       - linus_network
 
