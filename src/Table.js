@@ -48,23 +48,23 @@ const titleArr = ["id", " transaktionsnummer", "belopp", "beskrivning", "datum"]
 // }
 
 const Spreadsheet = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(["asd"]);
 
-  const fetchData = async () => {
-    try {
-      // Update the fetch URL to match your server endpoint
-      const response = await fetch('http://localhost:3001/api/data');
-      const jsonData = await response.json();
-      setData(jsonData); // Make sure jsonData is an array
-      console.log(jsonData);
-    } catch (error) {
-      console.error('Error fetching data', error);
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     // Update the fetch URL to match your server endpoint
+  //     const response = await fetch('http://localhost:3001/api/data');
+  //     const jsonData = await response.json();
+  //     setData(jsonData); // Make sure jsonData is an array
+  //     console.log(jsonData);
+  //   } catch (error) {
+  //     console.error('Error fetching data', error);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
   // ... rest of your code
 
