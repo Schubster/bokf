@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-import Spreadsheet from "./Table.js";
 import SpreadsheetTEST from './componentreact.js';
-
+import InsertButton from './buttonTest.js';
+import Spreadsheet from './Table.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Render both the SpreadsheetTEST and InsertButton components in the same root
 root.render(
-  <React.StrictMode>
-    <SpreadsheetTEST />
-  </React.StrictMode>
+  <>
+    <Spreadsheet />
+    <InsertButton />
+  </>
 );
-
-

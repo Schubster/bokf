@@ -10,9 +10,21 @@ tr{
   height: 40px;
   border-color: black;
   border-style: solid;
+  
+  
+}
+.tableDiv{
+  width: 100%;
+  background-color: bisque;
+
 }
 table{
   background-color: bisque;
   text-align: center;
+  width: 50%;
+  margin:auto;
+  border-color: black;
+  border-style: solid;
 } 
+
   
