@@ -48,7 +48,7 @@ const titleArr = ["id", " transaktionsnummer", "belopp", "beskrivning", "datum"]
 // }
 
 const Spreadsheet = () => {
-  const [data, setData] = useState(["asd"]);
+  const [data, setData] = useState(["Empty"]);
 
   const fetchData = async () => {
     try {
@@ -85,14 +85,11 @@ const Spreadsheet = () => {
     setData(newData);
   };
 
-  // const calculateOverallSum = () => {
-  //   return data.reduce((rowSum, row) => {
-  //     return rowSum + row.reduce((colSum, cell) => {
-  //       const cellValue = parseFloat(cell);
-  //       return isNaN(cellValue) ? colSum : colSum + cellValue;
-  //     }, 0);
-  //   }, 0);
-  // };
+  const calculateOverallSum = () => {
+    return(
+      data.reduce((total, row) => total + parseFloat(row.summa || 0), 0)
+    )
+  };
 
  
 
@@ -119,17 +116,9 @@ const Spreadsheet = () => {
       </div>
       <div>
       <hr />
-      {
-      data.map(item => (
-          <div key={item.id}>
-            <p>ID: {item.id}</p>
-            <p>Konto: {item.konto}</p>
-            <p>Summa: {item.summa}</p>
-            <p>Transaktion: {item.transaktion}</p>
-          </div>
-        ))}
+
       <div>
-        {/* <strong>Overall Sum:</strong> {calculateOverallSum()} */}
+        <strong>Overall Sum: {calculateOverallSum()}</strong> 
       </div>
       <button onClick={addRow}>Add Row</button>
       <button onClick={addColumn}>Add Column</button>
